@@ -140,7 +140,7 @@ class AutoPaginateNode(Node):
         self.multiple_paginations = multiple_paginations
 
     def render(self, context):
-        if self.multiple_paginations or getattr(context, "paginator", None):
+        if self.multiple_paginations or context.get("paginator", None):
             page_suffix = '_%s' % self.queryset_var
         else:
             page_suffix = ''
