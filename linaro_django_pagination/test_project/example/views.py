@@ -34,7 +34,7 @@ from django.template import RequestContext
 
 def list(request):
     return render_to_response("example/list.html", {
-        'item_list': range(1000),
+        'item_list': list(range(1000)),
     }, RequestContext(request))
 
 

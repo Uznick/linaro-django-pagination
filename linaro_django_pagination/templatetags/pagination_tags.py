@@ -170,7 +170,7 @@ class AutoPaginateNode(Node):
                     'False, an HTTP 404 page would have been shown instead.')
             context[key] = []
             context['invalid_page'] = True
-            return u''
+            return ''
         if self.context_var is not None:
             context[self.context_var] = page_obj.object_list
         else:
@@ -178,7 +178,7 @@ class AutoPaginateNode(Node):
         context['paginator'] = paginator
         context['page_obj'] = page_obj
         context['page_suffix'] = page_suffix
-        return u''
+        return ''
 
 
 class PaginateNode(Node):
@@ -329,7 +329,7 @@ def paginate(context, window=DEFAULT_WINDOW, margin=DEFAULT_MARGIN):
             getvars = context['request'].GET.copy()
             if 'page%s' % page_suffix in getvars:
                 del getvars['page%s' % page_suffix]
-            if len(getvars.keys()) > 0:
+            if len(list(getvars.keys())) > 0:
                 new_context['getvars'] = "&%s" % getvars.urlencode()
             else:
                 new_context['getvars'] = ''
